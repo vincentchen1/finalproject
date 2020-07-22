@@ -17,36 +17,6 @@ class Pokemon:
         self.type = _type
         self.level = _level
 
-    def create_trainer(self):
-        pokemon_data = f"Name: {self.name}, Type: {self.type}, Level: {self.level}"
-        username = f"{self.first_name} {self.last_name}"
-
-        user_info = {
-            'User': [
-            ],
-            'Pokemon': [
-            ],
-        }
-
-        add_trainer = input("Do you want to add a trainer? (yes/no) ")
-        if add_trainer == 'no':
-            return
-        else:
-            user_info['User'].append(username)
-
-        while True:
-            add_pokemon = input("Do you want to add a Pokemon? (yes/no) ")
-            if add_pokemon == 'no':
-                add_trainer = input("Do you want to add a trainer? (yes/no) ")
-                if add_trainer == 'no':
-                    return
-                else:
-                    user_info['User'].append(username)
-            else:
-                user_info['Pokemon'].append(pokemon_data)
-
-        print(user_info)
-
 
 # subclass JSONEncoder
 class PokemonEncoder(JSONEncoder):
@@ -72,4 +42,3 @@ while True:
         print()
     else:
         quit()
-
