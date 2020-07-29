@@ -37,7 +37,6 @@ class TrainerEncoder(JSONEncoder):
 
 
 out_file = open('pokemon.json', 'w')
-data = {}
 
 
 add_trainer = input("Do you want to add a trainer? (yes/no) ")
@@ -56,7 +55,7 @@ else:
 #    json.dump(trainer, out_file, cls=TrainerEncoder)
     print()
 
-
+_trainer_pokemon = []
 while True:
     add_pokemon = input("Do you want to add a Pokemon? (yes/no) ")
     if add_pokemon == 'no':
@@ -82,10 +81,9 @@ while True:
         input_level = input("What is your Pokemon's level? ")
         pokemon = Pokemon(input_name, input_type, input_level)
         print(PokemonEncoder().encode(pokemon))
-        _trainer_pokemon = []
         trainer = Trainer(input_trainer_first_name, input_trainer_last_name, input_trainer_age, input_trainer_ethnicity,
                           _trainer_pokemon)
         _trainer_pokemon.append(pokemon)
         print(TrainerEncoder().encode(trainer))
-        trainerJsonStr = json.dumps(trainer, indent=6, cls=TrainerEncoder)
-        json.dump(trainer, out_file, cls=TrainerEncoder)
+trainerJsonStr = json.dumps(trainer, indent=6, cls=TrainerEncoder)
+json.dump(trainer, out_file, cls=TrainerEncoder)
